@@ -1,0 +1,22 @@
+node{
+
+def mavenHome = tool name: "maven"
+
+stage("Git Checkout"){
+
+                git credentialsId: 'javahome2', url: 'https://github.com/srinivas1987devops/myweb.git' 
+        }
+        stage("Maven Build"){
+
+                sh "${mavenHome}/bin/mvn clean package"
+
+        }
+            
+        stage("deploy-dev"){
+            sshagent(['tomcat']) {
+            sh "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/myweb-omnitech/target/myweb-8.2.0.war  ec2-user@13.232.25.208:/opt/apache-tomcat-9.0.86/webapps"
+       }
+            
+}
+        
+}//node closing
