@@ -4,7 +4,7 @@ def mavenHome = tool name: "maven"
 
 stage("Git Checkout"){
 
-                git credentialsId: 'javahome2', url: 'https://github.com/srinivas1987devops/myweb.git' 
+                git branch: 'main', credentialsId: 'gitnew', url: 'https://github.com/MangarapuRaghu/MyWebApp.git'
         }
         stage("Maven Build"){
 
