@@ -14,7 +14,7 @@ stage("Git Checkout"){
             
         stage("deploy-dev"){
             sshagent(['tomcat']) {
-            sh "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/myweb-omnitech/target/myweb-8.2.0.war  ec2-user@13.232.25.208:/opt/apache-tomcat-9.0.86/webapps"
+            sh "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/myweb-omnitech/target/myweb-8.2.0.war  ec2-user@172.31.41.11:/opt/apache-tomcat-9.0.86/webapps"
        }
             
 }
